@@ -4,33 +4,47 @@ export default class Signup extends Component {
     constructor() {
         super();
         this.state = {
+            error: "",
             forename: "",
             surname: "",
             email: "",
             password: "",
             password2: "",
-            error: "",
-            passwordAlert: ""
-        };
+            passwordAlert: "",
+            submitBtnCSS: "disabled ",
+            submitBtnEnabled: false 
+        }
     }
 
     handleChange = (name) => (event) => {
         this.setState({[name]: event.target.value});
-    };
+    }
     confirmPassword = (password2) => (event) => {
-        this.setState({password2: event.target.value});
-        
-        // console.log(this.state.password !== this.state.password2)
+        // console.log(this.state.password2, event.target.value);
         if(password2){
-            if(this.state.password !== this.state.password2)
-                this.setState({passwordAlert: "is-invalid"});
-            else
-                this.setState({passwordAlert: "is-valid"});
+            if(this.state.password !== this.state.password2){
+                this.setState({passwordAlert: "is-invalid "});
+                this.disableSubmitBtn();
+            } else {
+                this.setState({passwordAlert: "is-valid "});
+                this.enableSubmitBtn();
+            }
         } else {
-            this.setState({passwordAlert: ""});
+            this.setState({passwordAlert: " "});
+            this.disableSubmitBtn();
         }
-        console.log(this.state.password, this.state.password2);
-    };
+        console.log(this.state.submitBtnEnabled, this.state.submitBtnCSS)
+    }
+
+    enableSubmitBtn() {
+        this.setState({submitBtnEnabled: true});
+        this.setState({submitBtnCSS: " "});
+    }
+
+    disableSubmitBtn() {
+        this.setState({submitBtnEnabled: false});
+        this.setState({submitBtnCSS: "disabled "});
+    }
 
     submit = event => {
         // prevent page reload
@@ -45,14 +59,14 @@ export default class Signup extends Component {
             password,
             password2
         };
-        // test inputs
+        // test statement - inputs
         // console.log(user);
         // attempt signup request
         this.signup(user)
         .then(data => {
             if(data.error) this.setState({error: data.error})
         });
-    };
+    }
 
     // make POST request to backend API - signup
     signup = user =>{
@@ -67,13 +81,26 @@ export default class Signup extends Component {
         )
         .then(res => {return res.json()})
         .catch(err => console.log(err))
-    };
+    }
 
     render() {
-        const {forename, surname, email, password, password2, error, passwordAlert} = this.state;
+        const {
+            forename, 
+            surname, 
+            email, 
+            password, 
+            password2, 
+            error, 
+            passwordAlert,
+            submitBtnEnabled,
+            submitBtnCSS
+        } = this.state;
         return (
             <div className="container">
-                <h2 className="my-4">Signup</h2>
+                <h2 className="my-4">
+                    Signup&nbsp;
+                    <i className="fas fa-user-plus"></i> 
+                </h2>
                 <div
                     className="alert alert-warning"
                     style={{ display: error ? "" : "none" }}
@@ -113,31 +140,33 @@ export default class Signup extends Component {
                         <input 
                             onChange={this.handleChange("password")} 
                             type="password" 
-                            className={"form-control "+{passwordAlert}}
+                            className="form-control "
                             value={password}
                         ></input>
                     </div>
                     <div className="form-group">
                         <label>Confirm Password</label>
                         <input 
-                            onChange={this.confirmPassword("password2")}
+                            onChange={this.handleChange("password2")}
+                            onKeyUp={this.confirmPassword("password2")}
                             type="password" 
                             className={"form-control "+passwordAlert} 
                             value={password2}
                             name="password2" 
                         ></input>
                     </div>
-                    <button id="disabledInput"
+                    <button
                         onClick={this.submit} 
-                        className="btn btn-primary"
+                        className={"btn btn-primary "+submitBtnCSS}  
+                        disabled={submitBtnEnabled}
                     >
                         Submit
                     </button>
                     <a 
-                        href="/signin"
+                        href="./login"
                         className="btn btn-secondary"
                     >
-                        Sign In
+                        Login
                     </a>
                 </form>
             </div>

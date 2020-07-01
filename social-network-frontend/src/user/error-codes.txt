@@ -1,0 +1,2 @@
+1: Email already exists.
+2: Incorrect password.
