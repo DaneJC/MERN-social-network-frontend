@@ -1,2 +1,11 @@
-1: Email already exists.
-2: Incorrect password.
+# Signup & login form input error codes,
+# used to determine location of UI error alerts 
+# with the relevant input fields.
+
+##### Signup #####
+1: Forename field.
+2: Surname field.
+
+##### Signup + Login #####
+3: Email field.
+4: Password field.

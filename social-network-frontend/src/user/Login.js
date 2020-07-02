@@ -14,6 +14,7 @@ export default class Login extends Component {
     }
     handleChange = (name) => (event) => {
         this.setState({[name]: event.target.value});
+        this.setState({error: "" });
     }
     submit = event => {
         // prevent page reload
@@ -31,7 +32,8 @@ export default class Login extends Component {
         this.signin(user)
         .then(data => {
             if(data.error) {
-                this.setState({error: data.error})
+                this.setState({error: data.error});
+                this.setState({password: ""});
             } else {
                 // authnticate user
                 this.authenticate(data, () => {
@@ -74,6 +76,12 @@ export default class Login extends Component {
         if (redirect) {
             return <Redirect to="/" />;
         }
+
+        function errorCheckAt(input) {
+            if (error) 
+                if (error.param === input) 
+                    return 'is-invalid ';
+        }
         
         return (
             <div className="container">
@@ -86,18 +94,30 @@ export default class Login extends Component {
                     <input 
                         onChange={this.handleChange("email")} 
                         type="email" 
-                        className="form-control" 
+                        className={"form-control "+errorCheckAt("email")} 
                         value={email}
                     ></input>
+                    <div 
+                        className="invalid-feedback" 
+                        style={{ display: error.param === "email"? "" : "none" }}
+                    >
+                        {error.msg}
+                    </div>
                 </div>
                 <div className="form-group">
                     <label>Password</label>
                     <input 
                         onChange={this.handleChange("password")} 
                         type="password" 
-                        className="form-control "
+                        className={"form-control "+errorCheckAt("password")} 
                         value={password}
                     ></input>
+                    <div 
+                        className="invalid-feedback" 
+                        style={{ display: error.param === "password"? "" : "none" }}
+                    >
+                        {error.msg}
+                    </div>
                 </div>
                 <button
                     onClick={this.submit} 
