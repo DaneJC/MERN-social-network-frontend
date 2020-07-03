@@ -31,6 +31,7 @@ export default class Login extends Component {
         // console.log(user);
         // attempt login request
         this.signin(user).then((data) => {
+            if (data) 
             if (data.error) {
                 this.setState({ error: data.error });
                 this.setState({ password: "" });

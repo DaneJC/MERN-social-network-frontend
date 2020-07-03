@@ -25,7 +25,7 @@ const AuthedNav = ({ history }) => (
                 <span className="navbar-toggler-icon"></span>
             </button>
 
-            <div className="collapse navbar-collapse">
+            <div className="collapse navbar-collapse" id="navbarColor01">
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item">
                         <NavLink
@@ -71,6 +71,28 @@ const AuthedNav = ({ history }) => (
                         >
                             About
                         </NavLink>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a
+                            class="nav-link dropdown-toggle"
+                            data-toggle="dropdown"
+                            href="#"
+                            role="button"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                        ></a>
+                        <div class="dropdown-menu text-right">
+                            <a class="dropdown-item" href="#">
+                                Profile
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                Your Bookings
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                                Logout <i className="fas fa-sign-out-alt"></i>
+                            </a>
+                        </div>
                     </li>
                 </ul>
             </div>
