@@ -1,15 +1,15 @@
 import React from "react";
 // import { Link } from "react-router-dom";
-import AuthedNav from "./navs/AuthedNav";
+import AuthedNav from "./core/navs/AuthedNav";
 
-const Gallery = () => (
+const Contact = () => (
     
     <div>
         <AuthedNav/>
         <div className="jumbotron">
-            <p className="lead">Gallery</p>
+            <p className="lead">Contact</p>
         </div>
     </div>
 );
 
-export default Gallery;
+export default Contact;

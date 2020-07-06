@@ -1,15 +1,15 @@
 import React from "react";
 // import { Link } from "react-router-dom";
-import AuthedNav from "./navs/AuthedNav";
+import AuthedNav from "./core/navs/AuthedNav";
 
-const NewsFeed = () => (
+const Gallery = () => (
     
     <div>
         <AuthedNav/>
         <div className="jumbotron">
-            <p className="lead">NewsFeed</p>
+            <p className="lead">Gallery</p>
         </div>
     </div>
 );
 
-export default NewsFeed;
+export default Gallery;

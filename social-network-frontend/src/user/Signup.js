@@ -85,7 +85,7 @@ export default class Signup extends Component {
 
     // make POST request to backend API - signup
     signup = (user) => {
-        return fetch("http://localhost:5000/signup", {
+        return fetch(`${process.env.REACT_APP_API_URL}/signup`, {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -107,6 +107,7 @@ export default class Signup extends Component {
     }
 
     render() {
+
         const {
             error,
             forename,
@@ -132,8 +133,8 @@ export default class Signup extends Component {
         return (
             <div>
                 <UnauthedNav/>
-                <div className="container">
-                    <h2 className="my-4">
+                <div className="container col-sm-7 col-sm-7 col-md-5 col-xl-3 my-4 pb-4 border shadow">
+                    <h2 className="my-4 d-flex justify-content-center">
                         Signup&nbsp;
                         <i className="fas fa-user-plus"></i>
                     </h2>
@@ -234,6 +235,7 @@ export default class Signup extends Component {
                                 name="password2"
                             ></input>
                         </div>
+                        <div className="d-flex justify-content-center">
                         <button
                             onClick={this.submit}
                             className={"btn btn-primary " + submitBtnCSS}
@@ -244,6 +246,7 @@ export default class Signup extends Component {
                         <Link to="/login" className="btn btn-secondary">
                             Login
                         </Link>
+                        </div>
                     </form>
                 </div>
             </div>

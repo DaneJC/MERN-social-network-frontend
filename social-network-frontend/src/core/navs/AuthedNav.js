@@ -1,14 +1,15 @@
 import React from "react";
-import { Link, NavLink, withRouter } from "react-router-dom";
+import { Redirect, NavLink, withRouter } from "react-router-dom";
+import { getUserDetail } from "../../helpers/index";
+import { isAuthUser, logout } from "../../auth/index";
 
-// const isActiveLink = (history, path) => {
-//     if(history.location.path === path)
-//         return "nav-item ";
-//     else return " ";
-// }
+const isAuthSession = () => {
+    if (!isAuthUser()) return <Redirect to="/login" />;
+};
 
 const AuthedNav = ({ history }) => (
     <div>
+        {isAuthSession()}
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
             <NavLink className="navbar-brand" to="/">
                 ENHANCE
@@ -72,29 +73,37 @@ const AuthedNav = ({ history }) => (
                             About
                         </NavLink>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a
-                            class="nav-link dropdown-toggle"
-                            data-toggle="dropdown"
-                            href="#"
-                            role="button"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                        ></a>
-                        <div class="dropdown-menu text-right">
-                            <a class="dropdown-item" href="#">
-                                Profile
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                Your Bookings
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">
-                                Logout <i className="fas fa-sign-out-alt"></i>
-                            </a>
-                        </div>
-                    </li>
                 </ul>
+                <div className="navbar-nav nav-item dropdown pull-right">
+                    <a
+                        className="nav-link dropdown-toggle"
+                        data-toggle="dropdown"
+                        href="#"
+                        role="button"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                    >
+                        {getUserDetail("forename")}
+                    </a>
+                    <div className="dropdown-menu primary">
+                        <NavLink className="dropdown-item" to={"user/"+getUserDetail("_id")}>
+                            <i className="fa fa-user-o" aria-hidden="true"></i>{" "}
+                            Profile
+                        </NavLink>
+                        <NavLink className="dropdown-item" to="#">
+                            <i className="fa fa-book" aria-hidden="false"></i>{" "}
+                            Bookings
+                        </NavLink>
+                        <div className="dropdown-divider"></div>
+                        <NavLink
+                            className="dropdown-item"
+                            to="#"
+                            onClick={() => logout()}
+                        >
+                            <i className="fa fa-sign-out-alt"></i> Logout
+                        </NavLink>
+                    </div>
+                </div>
             </div>
         </nav>
     </div>

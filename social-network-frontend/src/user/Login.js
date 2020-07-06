@@ -31,23 +31,23 @@ export default class Login extends Component {
         // console.log(user);
         // attempt login request
         this.signin(user).then((data) => {
-            if (data) 
-            if (data.error) {
-                this.setState({ error: data.error });
-                this.setState({ password: "" });
-            } else {
-                // authnticate user
-                this.authenticate(data, () => {
-                    // redirect to home page
-                    this.setState({ redirect: true });
-                });
-            }
+            if (data)
+                if (data.error) {
+                    this.setState({ error: data.error });
+                    this.setState({ password: "" });
+                } else {
+                    // authnticate user
+                    this.authenticate(data, () => {
+                        // redirect to home page
+                        this.setState({ redirect: true });
+                    });
+                }
         });
     };
 
     // make POST request to backend API - signup
     signin = (user) => {
-        return fetch("http://localhost:5000/login", {
+        return fetch(`${process.env.REACT_APP_API_URL}/login`, {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -80,9 +80,9 @@ export default class Login extends Component {
 
         return (
             <div>
-                <UnauthedNav/>
-                <div className="container">
-                    <h2 className="my-4">
+                <UnauthedNav />
+                <div className="container col-sm-7 col-md-5 col-xl-3 my-4 pb-4 border shadow">
+                    <h2 className="my-4 d-flex justify-content-center ">
                         Login&nbsp;
                         <i className="fas fa-sign-in-alt"></i>
                     </h2>
@@ -123,12 +123,17 @@ export default class Login extends Component {
                             {error.msg}
                         </div>
                     </div>
-                    <button onClick={this.submit} className="btn btn-primary ">
-                        Login
-                    </button>
-                    <Link to="/signup" className="btn btn-secondary">
-                        Signup
-                    </Link>
+                    <div className="d-flex justify-content-center">
+                        <button
+                            onClick={this.submit}
+                            className="btn btn-primary "
+                        >
+                            Login
+                        </button>
+                        <Link to="/signup" className="btn btn-secondary">
+                            Signup
+                        </Link>
+                    </div>
                 </div>
             </div>
         );
