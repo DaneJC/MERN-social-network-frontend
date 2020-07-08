@@ -81,13 +81,13 @@ export default class Login extends Component {
         return (
             <div>
                 <UnauthedNav />
-                <div className="container col-sm-7 col-md-5 col-xl-3 my-4 pb-4 border shadow">
+                <div className="container col-sm-7 col-md-5 col-xl-3 my-4 pb-5 px-5 border rounded-lg shadow">
                     <h2 className="my-4 d-flex justify-content-center ">
                         Login&nbsp;
                         <i className="fas fa-sign-in-alt"></i>
                     </h2>
                     <div className="form-group">
-                        <label>Email</label>
+                        <label className="text-muted">Email</label>
                         <input
                             onChange={this.handleChange("email")}
                             type="email"
@@ -104,7 +104,7 @@ export default class Login extends Component {
                         </div>
                     </div>
                     <div className="form-group">
-                        <label>Password</label>
+                        <label className="text-muted">Password</label>
                         <input
                             onChange={this.handleChange("password")}
                             type="password"

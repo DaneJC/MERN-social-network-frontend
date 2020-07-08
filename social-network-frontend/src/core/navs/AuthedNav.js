@@ -10,7 +10,7 @@ const isAuthSession = () => {
 const AuthedNav = ({ history }) => (
     <div>
         {isAuthSession()}
-        <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav className="navbar navbar-sm navbar-expand-lg navbar-dark bg-primary py-3 mb-4">
             <NavLink className="navbar-brand" to="/">
                 ENHANCE
             </NavLink>
@@ -74,7 +74,8 @@ const AuthedNav = ({ history }) => (
                         </NavLink>
                     </li>
                 </ul>
-                <div className="navbar-nav nav-item dropdown pull-right">
+                <div className="navbar-nav nav-item dropdown pull-right ">
+                    
                     <a
                         className="nav-link dropdown-toggle"
                         data-toggle="dropdown"
@@ -85,22 +86,22 @@ const AuthedNav = ({ history }) => (
                     >
                         {getUserDetail("forename")}
                     </a>
-                    <div className="dropdown-menu primary">
+                    <div className="dropdown-menu dropdown-menu-right bg-white ">
                         <NavLink className="dropdown-item" to={"user/"+getUserDetail("_id")}>
-                            <i className="fa fa-user-o" aria-hidden="true"></i>{" "}
+                            <i className="fa fa-user-o primary" aria-hidden="true"></i>{" "}
                             Profile
                         </NavLink>
                         <NavLink className="dropdown-item" to="#">
-                            <i className="fa fa-book" aria-hidden="false"></i>{" "}
+                            <i className="fa fa-book primary" aria-hidden="false"></i>{" "}
                             Bookings
                         </NavLink>
-                        <div className="dropdown-divider"></div>
+                        <div className="dropdown-divider bg-white secondary"></div>
                         <NavLink
                             className="dropdown-item"
                             to="#"
                             onClick={() => logout()}
                         >
-                            <i className="fa fa-sign-out-alt"></i> Logout
+                            <i className="fa fa-sign-out-alt bg-white secondary"></i> Logout
                         </NavLink>
                     </div>
                 </div>

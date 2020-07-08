@@ -133,7 +133,7 @@ export default class Signup extends Component {
         return (
             <div>
                 <UnauthedNav/>
-                <div className="container col-sm-7 col-sm-7 col-md-5 col-xl-3 my-4 pb-4 border shadow">
+                <div className="container col-sm-7 col-sm-7 col-md-5 col-xl-3 my-4 pb-5 px-5 border rounded-lg shadow">
                     <h2 className="my-4 d-flex justify-content-center">
                         Signup&nbsp;
                         <i className="fas fa-user-plus"></i>

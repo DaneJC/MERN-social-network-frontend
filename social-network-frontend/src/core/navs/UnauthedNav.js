@@ -3,7 +3,7 @@ import React from "react";
 
 const UnauthedNav = () => (
     <div>
-        <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-primary py-3 ">
             <a className="navbar-brand" href="#">
                 ENHANCE
             </a>

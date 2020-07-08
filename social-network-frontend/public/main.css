@@ -1,3 +1,50 @@
-html, body {
-    height: 100%;;
+html,
+body {
+    height: 100%;
+}
+
+/* body {
+    background-color: white;
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 1) 0%,
+        rgb(255, 251, 253) 100%
+    );
+} */
+
+.bg-grey {
+    background-color: #fafafa !important;
+}
+
+.bg-primary  {
+    background-color: rgba(238, 174, 202, 1) !important;
+}
+.bg-secondary {
+    background-color: rgba(148, 187, 233, 1) !important;
+}
+
+.shadow-round-border {
+    box-shadow: 0 0.3rem 0.3rem rgba(0, 0, 0, 0.05) !important;
+    border-radius: 0.3rem !important;
+} 
+
+.primary, a.link, .i-send :hover{
+    color: rgba(238, 174, 202, 1) !important;
+}
+
+.secondary, a.link :hover {
+    color: rgba(148, 187, 233, 1) !important;
+}
+
+.navbar {
+    background: rgb(238, 174, 202);
+    background: radial-gradient(
+        circle,
+        rgba(238, 174, 202, 1) 0%,
+        rgba(148, 187, 233, 1) 100%
+    );
+}
+
+textarea {
+    resize: none;
 }

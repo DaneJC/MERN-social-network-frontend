@@ -13,10 +13,10 @@ import About from "./About";
 const MainRouter = () => (
     <div>
         <Switch>
+            <Route exact path="/user/:userId" component={Profile}></Route>
             <Route exact path="/" component={Home}></Route>
             <Route exact path="/signup" component={Signup}></Route>
             <Route exact path="/login" component={Login}></Route>
-            <Route exact path="/user/:userId" component={Profile}></Route>
             <Route exact path="/newsfeed" component={NewsFeed}></Route>
             <Route exact path="/gallery" component={Gallery}></Route>
             <Route exact path="/booking" component={Booking}></Route>
