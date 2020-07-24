@@ -3,9 +3,8 @@ import React from "react";
 import AuthedNav from "./core/navs/AuthedNav";
 
 const Booking = () => (
-    
     <div>
-        <AuthedNav/>
+        <AuthedNav />
         <div className="jumbotron">
             <p className="lead">Booking</p>
         </div>
