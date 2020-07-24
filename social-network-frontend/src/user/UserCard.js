@@ -1,24 +1,37 @@
 import React, { Component } from "react";
-import { isAuthUser } from "../auth/index";
-import { Link } from "react-router-dom";
+import { isAuthenticated } from "../auth/index";
+// import { Link } from "react-router-dom";
+import DefaultProfileImg from "../img/default_avatar.png";
 import { getUserDetail } from "../helpers/index";
+import DeleteUser from "./DeleteUser";
+import UpdateUser from "./UpdateUser";
+import UpdateProfileImage from "./UpdateProfileImage";
 
 export default class UserCard extends Component {
     render() {
-        const { user } = this.props;
-        // console.log("user", user);
+        const { user, userIdURLParam } = this.props;
+        // console.log("UserCard.userIdURLParam: ", userIdURLParam);
+        const photoUrl = user._id
+            ? `http://192.168.1.10:5000/user/photo/${
+                  user._id
+              }?${new Date().getTime()}`
+            : DefaultProfileImg;
         return (
-            <div className="card  shadow-round-border mb-4 ">
+            <div className="card shadow-round-border m-0 p-0 mb-4">
                 <img
-                    className="rounded-circle mx-auto my-2"
-                    style={{
-                        height: "10rem",
-                        width: "10rem",
-                        display: "block",
-                    }}
-                    src={require("../img/default_avatar.png")}
-                    alt="default user avatar for user profile."
+                    className="rounded-circle mx-auto my-2 image-responsive img-profile-resize"
+                    src={photoUrl}
+                    alt="user avatar for user profile."
                 ></img>
+                {isAuthenticated().user._id === userIdURLParam ? (
+                    <UpdateProfileImage
+                        userId={userIdURLParam}
+                        refresh={this.props.refresh}
+                    />
+                ) : (
+                    ""
+                )}
+
                 <h3 className="card-header text-center secondary">
                     {`${user.forename} ${user.surname}`}
                 </h3>
@@ -46,22 +59,17 @@ export default class UserCard extends Component {
                         </span>
                     </li>
                 </ul>
-                <div
-                    className="card-body"
-                    style={{
-                        display:
-                            getUserDetail("_id") === user._id
-                                ? ""
-                                : "none",
-                    }}
-                >
-                    <Link to="#" className="card-link secondary">
-                        Edit
-                    </Link>
-                    <Link to="#" className="card-link primary">
-                        Delete
-                    </Link>
-                </div>
+                {isAuthenticated().user._id === userIdURLParam ? (
+                    <div
+                        className="card-body d-flex justify-content-center"
+                        style={{ hidden: "true" }}
+                    >
+                        <UpdateUser userID={userIdURLParam} />
+                        <DeleteUser userID={userIdURLParam} />
+                    </div>
+                ) : (
+                    ""
+                )}
             </div>
         );
     }

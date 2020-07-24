@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 
-export const isAuthUser = () => {
+export const isAuthenticated = () => {
     if (typeof window == "undefined") {
         return false;
     }
@@ -16,7 +16,7 @@ export const isAuthUser = () => {
 export const logout = () => {
     if (typeof window !== "undefined") localStorage.removeItem("jwt");
     // next();
-    return fetch(`${process.env.REACT_APP_API_URL}/logout`, {
+    return fetch(`http://192.168.1.10:5000/logout`, {
         method: "GET",
         headers: {
             Accept: "application/json",

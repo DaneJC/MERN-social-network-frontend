@@ -1,57 +1,57 @@
 export const readUser = (userId, token) => {
-    return fetch(`${process.env.REACT_APP_API_URL}/user/${userId}`, {
+    return fetch(`${process.env.API_URI}/user/${userId}`, {
         method: "GET",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`
-        }
+            Authorization: `Bearer ${token}`,
+        },
     })
-        .then(response => {
+        .then((response) => {
             return response.json();
         })
-        .catch(err => console.log(err));
+        .catch((err) => console.log(err));
 };
 
 export const update = (userId, token, user) => {
     console.log("USER DATA UPDATE: ", user);
-    return fetch(`${process.env.REACT_APP_API_URL}/user/${userId}`, {
+    return fetch(`${process.env.API_URI}/user/${userId}`, {
         method: "PUT",
         headers: {
             Accept: "application/json",
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
         },
-        body: user
+        body: user,
     })
-        .then(response => {
+        .then((response) => {
             return response.json();
         })
-        .catch(err => console.log(err));
+        .catch((err) => console.log(err));
 };
 
 export const remove = (userId, token) => {
-    return fetch(`${process.env.REACT_APP_API_URL}/user/${userId}`, {
+    return fetch(`${process.env.API_URI}/user/${userId}`, {
         method: "DELETE",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`
-        }
+            Authorization: `Bearer ${token}`,
+        },
     })
-        .then(response => {
+        .then((response) => {
             return response.json();
         })
-        .catch(err => console.log(err));
+        .catch((err) => console.log(err));
 };
 
 export const list = () => {
-    return fetch(`${process.env.REACT_APP_API_URL}/users`, {
-        method: "GET"
+    return fetch(`${process.env.API_URI}/users`, {
+        method: "GET",
     })
-        .then(response => {
+        .then((response) => {
             return response.json();
         })
-        .catch(err => console.log(err));
+        .catch((err) => console.log(err));
 };
 
 export const updateUser = (user, next) => {
@@ -66,48 +66,48 @@ export const updateUser = (user, next) => {
 };
 
 export const follow = (userId, token, followId) => {
-    return fetch(`${process.env.REACT_APP_API_URL}/user/follow`, {
+    return fetch(`${process.env.API_URI}/user/follow`, {
         method: "PUT",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ userId, followId })
+        body: JSON.stringify({ userId, followId }),
     })
-        .then(response => {
+        .then((response) => {
             return response.json();
         })
-        .catch(err => console.log(err));
+        .catch((err) => console.log(err));
 };
 
 export const unfollow = (userId, token, unfollowId) => {
-    return fetch(`${process.env.REACT_APP_API_URL}/user/unfollow`, {
+    return fetch(`${process.env.API_URI}/user/unfollow`, {
         method: "PUT",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ userId, unfollowId })
+        body: JSON.stringify({ userId, unfollowId }),
     })
-        .then(response => {
+        .then((response) => {
             return response.json();
         })
-        .catch(err => console.log(err));
+        .catch((err) => console.log(err));
 };
 
 export const findPeople = (userId, token) => {
-    return fetch(`${process.env.REACT_APP_API_URL}/user/findpeople/${userId}`, {
+    return fetch(`${process.env.API_URI}/user/findpeople/${userId}`, {
         method: "GET",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`
-        }
+            Authorization: `Bearer ${token}`,
+        },
     })
-        .then(response => {
+        .then((response) => {
             return response.json();
         })
-        .catch(err => console.log(err));
+        .catch((err) => console.log(err));
 };

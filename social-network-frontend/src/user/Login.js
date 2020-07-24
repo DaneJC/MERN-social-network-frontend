@@ -47,7 +47,7 @@ export default class Login extends Component {
 
     // make POST request to backend API - signup
     signin = (user) => {
-        return fetch(`${process.env.REACT_APP_API_URL}/login`, {
+        return fetch(`http://192.168.1.10:5000/login`, {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -126,11 +126,14 @@ export default class Login extends Component {
                     <div className="d-flex justify-content-center">
                         <button
                             onClick={this.submit}
-                            className="btn btn-primary "
+                            className="btn btn-outline-primary "
                         >
                             Login
                         </button>
-                        <Link to="/signup" className="btn btn-secondary">
+                        <Link
+                            to="/signup"
+                            className="btn btn-outline-secondary"
+                        >
                             Signup
                         </Link>
                     </div>

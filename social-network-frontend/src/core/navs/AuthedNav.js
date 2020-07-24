@@ -1,16 +1,16 @@
 import React from "react";
 import { Redirect, NavLink, withRouter } from "react-router-dom";
 import { getUserDetail } from "../../helpers/index";
-import { isAuthUser, logout } from "../../auth/index";
+import { isAuthenticated, logout } from "../../auth/index";
 
 const isAuthSession = () => {
-    if (!isAuthUser()) return <Redirect to="/login" />;
+    if (!isAuthenticated()) return <Redirect to="/login" />;
 };
 
 const AuthedNav = ({ history }) => (
     <div>
         {isAuthSession()}
-        <nav className="navbar navbar-sm navbar-expand-lg navbar-dark bg-primary py-3 mb-4">
+        <nav className="navbar navbar-sm navbar-expand-lg navbar-dark bg-primary fixed-top py-2 mb-4">
             <NavLink className="navbar-brand" to="/">
                 ENHANCE
             </NavLink>
@@ -75,7 +75,6 @@ const AuthedNav = ({ history }) => (
                     </li>
                 </ul>
                 <div className="navbar-nav nav-item dropdown pull-right ">
-                    
                     <a
                         className="nav-link dropdown-toggle"
                         data-toggle="dropdown"
@@ -87,12 +86,21 @@ const AuthedNav = ({ history }) => (
                         {getUserDetail("forename")}
                     </a>
                     <div className="dropdown-menu dropdown-menu-right bg-white ">
-                        <NavLink className="dropdown-item" to={"user/"+getUserDetail("_id")}>
-                            <i className="fa fa-user-o primary" aria-hidden="true"></i>{" "}
+                        <NavLink
+                            className="dropdown-item"
+                            to={"user/" + getUserDetail("_id")}
+                        >
+                            <i
+                                className="fa fa-user-o primary"
+                                aria-hidden="true"
+                            ></i>{" "}
                             Profile
                         </NavLink>
                         <NavLink className="dropdown-item" to="#">
-                            <i className="fa fa-book primary" aria-hidden="false"></i>{" "}
+                            <i
+                                className="fa fa-book primary"
+                                aria-hidden="false"
+                            ></i>{" "}
                             Bookings
                         </NavLink>
                         <div className="dropdown-divider bg-white secondary"></div>
@@ -101,12 +109,14 @@ const AuthedNav = ({ history }) => (
                             to="#"
                             onClick={() => logout()}
                         >
-                            <i className="fa fa-sign-out-alt bg-white secondary"></i> Logout
+                            <i className="fa fa-sign-out-alt bg-white secondary"></i>{" "}
+                            Logout
                         </NavLink>
                     </div>
                 </div>
             </div>
         </nav>
+        <div className="clear"></div>
     </div>
 );
 

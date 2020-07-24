@@ -85,7 +85,7 @@ export default class Signup extends Component {
 
     // make POST request to backend API - signup
     signup = (user) => {
-        return fetch(`${process.env.REACT_APP_API_URL}/signup`, {
+        return fetch(`http://192.168.1.10:5000/signup`, {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -107,7 +107,6 @@ export default class Signup extends Component {
     }
 
     render() {
-
         const {
             error,
             forename,
@@ -132,7 +131,7 @@ export default class Signup extends Component {
 
         return (
             <div>
-                <UnauthedNav/>
+                <UnauthedNav />
                 <div className="container col-sm-7 col-sm-7 col-md-5 col-xl-3 my-4 pb-5 px-5 border rounded-lg shadow">
                     <h2 className="my-4 d-flex justify-content-center">
                         Signup&nbsp;
@@ -236,16 +235,16 @@ export default class Signup extends Component {
                             ></input>
                         </div>
                         <div className="d-flex justify-content-center">
-                        <button
-                            onClick={this.submit}
-                            className={"btn btn-primary " + submitBtnCSS}
-                            disabled={submitBtnDisabled}
-                        >
-                            Submit
-                        </button>
-                        <Link to="/login" className="btn btn-secondary">
-                            Login
-                        </Link>
+                            <button
+                                onClick={this.submit}
+                                className={"btn btn-primary " + submitBtnCSS}
+                                disabled={submitBtnDisabled}
+                            >
+                                Submit
+                            </button>
+                            <Link to="/login" className="btn btn-secondary">
+                                Login
+                            </Link>
                         </div>
                     </form>
                 </div>

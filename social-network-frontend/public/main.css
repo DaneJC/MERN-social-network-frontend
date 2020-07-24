@@ -1,38 +1,48 @@
-html,
+/* #ced4da; */
 body {
-    height: 100%;
-}
-
-/* body {
     background-color: white;
     background: radial-gradient(
         circle,
         rgba(255, 255, 255, 1) 0%,
         rgb(255, 251, 253) 100%
     );
-} */
-
-.bg-grey {
-    background-color: #fafafa !important;
 }
 
-.bg-primary  {
+.btn-danger-loud {
+    border-color: #d9534f;
+}
+
+.bg-grey {
+    background-color: #f5f4f4 !important;
+}
+
+.bg-primary {
     background-color: rgba(238, 174, 202, 1) !important;
 }
 .bg-secondary {
     background-color: rgba(148, 187, 233, 1) !important;
 }
 
-.shadow-round-border {
-    box-shadow: 0 0.3rem 0.3rem rgba(0, 0, 0, 0.05) !important;
-    border-radius: 0.3rem !important;
-} 
+.i-like:hover {
+    color: rgba(148, 187, 233, 1) !important;
+}
 
-.primary, a.link, .i-send :hover{
+.i-love:hover {
     color: rgba(238, 174, 202, 1) !important;
 }
 
-.secondary, a.link :hover {
+.i-comment:hover {
+    color: #333333 !important;
+}
+
+.primary,
+a.link,
+.i-send :hover {
+    color: rgba(238, 174, 202, 1) !important;
+}
+
+.secondary,
+a.link :hover {
     color: rgba(148, 187, 233, 1) !important;
 }
 
@@ -43,8 +53,4 @@ body {
         rgba(238, 174, 202, 1) 0%,
         rgba(148, 187, 233, 1) 100%
     );
-}
-
-textarea {
-    resize: none;
 }
