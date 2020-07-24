@@ -135,7 +135,7 @@ export default class Post extends Component {
         var photoUrl = DefaultProfileImg;
         try {
             if (post.author._id)
-                photoUrl = `${process.env.API_URI}/user/photo/${
+                photoUrl = `${process.env.REACT_APP_API_URL}/user/photo/${
                     post.author._id
                 }?${new Date().getTime()}`;
         } catch (err) {

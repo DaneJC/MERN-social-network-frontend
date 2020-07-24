@@ -16,7 +16,7 @@ export const isAuthenticated = () => {
 export const logout = () => {
     if (typeof window !== "undefined") localStorage.removeItem("jwt");
     // next();
-    return fetch(`http://192.168.1.10:5000/logout`, {
+    return fetch(`${process.env.REACT_APP_API_URL}/logout`, {
         method: "GET",
         headers: {
             Accept: "application/json",

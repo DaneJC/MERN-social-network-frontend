@@ -1,5 +1,5 @@
 import openSocket from "socket.io-client";
 
-const socket = openSocket("http://192.168.1.10:5000");
+const socket = openSocket(`${process.env.REACT_APP_API_URL}`);
 
 export default socket;

@@ -12,6 +12,7 @@ export default class Login extends Component {
             password: "",
             redirect: false,
         };
+        console.log(process.env.REACT_APP_API_URL);
     }
     handleChange = (name) => (event) => {
         this.setState({ [name]: event.target.value });
@@ -47,7 +48,7 @@ export default class Login extends Component {
 
     // make POST request to backend API - signup
     signin = (user) => {
-        return fetch(`http://192.168.1.10:5000/login`, {
+        return fetch(`${process.env.REACT_APP_API_URL}/login`, {
             method: "POST",
             headers: {
                 Accept: "application/json",

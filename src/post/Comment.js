@@ -63,7 +63,7 @@ export default class Comment extends Component {
         var photoUrl = DefaultProfileImg;
         try {
             if (comment.postedBy._id)
-                photoUrl = `${process.env.API_URI}/user/photo/${
+                photoUrl = `${process.env.REACT_APP_API_URL}/user/photo/${
                     comment.postedBy._id
                 }?${new Date().getTime()}`;
         } catch (err) {

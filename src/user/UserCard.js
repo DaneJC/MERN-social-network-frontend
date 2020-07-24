@@ -12,7 +12,7 @@ export default class UserCard extends Component {
         const { user, userIdURLParam } = this.props;
         // console.log("UserCard.userIdURLParam: ", userIdURLParam);
         const photoUrl = user._id
-            ? `http://192.168.1.10:5000/user/photo/${
+            ? `${process.env.REACT_APP_API_URL}/user/photo/${
                   user._id
               }?${new Date().getTime()}`
             : DefaultProfileImg;

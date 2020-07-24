@@ -111,7 +111,7 @@ class Profile extends Component {
                     </div>
                     <div className="col ">
                         <CreatePost userIdURLParam={userIdURLParam} />
-                        {posts.map((post, i) => {
+                        {posts.map((post) => {
                             if (post.author) {
                                 return <Post key={post._id} post={post} />;
                             }

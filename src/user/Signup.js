@@ -85,7 +85,7 @@ export default class Signup extends Component {
 
     // make POST request to backend API - signup
     signup = (user) => {
-        return fetch(`http://192.168.1.10:5000/signup`, {
+        return fetch(`${process.env.REACT_APP_API_URL}/signup`, {
             method: "POST",
             headers: {
                 Accept: "application/json",
